@@ -33,16 +33,24 @@ class Dog(Pet):
     def showInfo(self):
         super().showInfo()"""
 
+def getInput(animal, parameter):
+    while True:
+        parameterInput = input(f"Enter {animal}'s {parameter}: ").lower().strip()
+        if parameterInput:
+            return parameterInput
+        else:
+            print(f"Invalid {parameter} input")
+
 def basicTraits(animal):
-    name = input(f"Enter {animal}'s name: ").lower().strip()
-    breed = input(f"Enter {animal}'s breed: ").lower().strip()
+    name = getInput(animal, "name")
+    breed = getInput(animal, "breed")
     while True:
         try:
             age = int(input(f"Enter {animal}'s age: "))
             break
         except ValueError:
             print("Please enter a valid age")
-    return name, age, breed
+    return name, breed, age
 
 def listAnimals():
     for animal in animals:
@@ -66,9 +74,10 @@ def destroyAnimal():
         print("Animal does not exist")
 
 def createDog():
-    name, age, breed = basicTraits("dog")
-    bark = input("Enter dog's bark type: ")
-    animals[name] = Dog(name, age, "dog", breed, bark)
+    animalType = "dog"
+    name, breed, age = basicTraits(animalType)
+    bark = getInput(animalType, "bark type")
+    animals[name] = Dog(name, age, animalType, breed, bark)
 
 while True:
     match input("1. Create animal | 2. List Animals | 3. Show info | 4. Destroy animal | 5. Exit: ").strip():
