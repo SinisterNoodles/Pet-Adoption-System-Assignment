@@ -74,11 +74,11 @@ def showInfo():
     else:
         print("Animal does not exist")
 
-def destroyAnimal():
+def giveUpAnimal():
     animal = findAnimal()
     if animal in animals:
         del animals[animal]
-        print(f"{animal.title()} has been destroyed")
+        print(f"{animal.title()} has been given away")
     else:
         print("Animal does not exist")
 
@@ -95,7 +95,7 @@ def adoptCat():
     animals[name] = Cat(name, age, animalType, breed, furColour)
 
 while True:
-    match input("1. Adopt animal | 2. List Animals | 3. Show info | 4. Destroy animal | 5. Exit: ").strip():
+    match input("1. Adopt animal | 2. List Animals | 3. Show info | 4. Give up animal | 5. Exit: ").strip():
         case "1":
             match input("Enter species of animal: ").lower().strip():
                 case "dog":
@@ -109,7 +109,7 @@ while True:
         case "3":
             checkValid(showInfo)
         case "4":
-            checkValid(destroyAnimal)
+            checkValid(giveUpAnimal)
         case "5":
             break
         case _:
