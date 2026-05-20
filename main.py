@@ -41,6 +41,12 @@ def getInput(animal, parameter):
         else:
             print(f"Invalid {parameter} input")
 
+def checkValid(function):
+    if animals:
+        function()
+    else:
+        print("There are no current animals")
+
 def basicTraits(animal):
     name = getInput(animal, "name")
     breed = getInput(animal, "breed")
@@ -70,6 +76,7 @@ def destroyAnimal():
     animal = findAnimal()
     if animal in animals:
         del animals[animal]
+        print(f"{animal} has been destroyed")
     else:
         print("Animal does not exist")
 
@@ -84,11 +91,11 @@ while True:
         case "1":
             createDog()
         case "2":
-            listAnimals()
+            checkValid(listAnimals)
         case "3":
-            showInfo()
+            checkValid(showInfo)
         case "4":
-            destroyAnimal()
+            checkValid(destroyAnimal)
         case "5":
             break
         case _:
