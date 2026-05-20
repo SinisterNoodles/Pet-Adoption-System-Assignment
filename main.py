@@ -26,12 +26,14 @@ class Dog(Pet):
         super().showInfo()
         print(f"Bark type: {self.bark.title()}")
 
-"""class Cat(Pet):
-    def __init__(self, name, age, animalType, breed, bark):
+class Cat(Pet):
+    def __init__(self, name, age, animalType, breed, furColour):
         super().__init__(name, age, animalType, breed)
+        self.furColour = furColour
 
     def showInfo(self):
-        super().showInfo()"""
+        super().showInfo()
+        print(f"Fur colour: {self.furColour}")
 
 def getInput(animal, parameter):
     while True:
@@ -76,20 +78,32 @@ def destroyAnimal():
     animal = findAnimal()
     if animal in animals:
         del animals[animal]
-        print(f"{animal} has been destroyed")
+        print(f"{animal.title()} has been destroyed")
     else:
         print("Animal does not exist")
 
-def createDog():
+def adoptDog():
     animalType = "dog"
     name, breed, age = basicTraits(animalType)
     bark = getInput(animalType, "bark type")
     animals[name] = Dog(name, age, animalType, breed, bark)
 
+def adoptCat():
+    animalType = "cat"
+    name, breed, age = basicTraits(animalType)
+    furColour = getInput(animalType, "fur colour")
+    animals[name] = Cat(name, age, animalType, breed, furColour)
+
 while True:
-    match input("1. Create animal | 2. List Animals | 3. Show info | 4. Destroy animal | 5. Exit: ").strip():
+    match input("1. Adopt animal | 2. List Animals | 3. Show info | 4. Destroy animal | 5. Exit: ").strip():
         case "1":
-            createDog()
+            match input("Enter species of animal: ").lower().strip():
+                case "dog":
+                    adoptDog()
+                case "cat":
+                    adoptCat()
+                case _:
+                    print("Unavailable species")
         case "2":
             checkValid(listAnimals)
         case "3":
