@@ -95,7 +95,7 @@ def adoptCat():
     animals[name] = Cat(name, age, animalType, breed, furColour)
 
 while True:
-    match input("1. Adopt animal | 2. List Animals | 3. Show info | 4. Give up animal | 5. Exit: ").strip():
+    match input("1. Adopt Animal | 2. List Animals | 3. Show Info | 4. Give Up Animal | 5. Exit: ").strip():
         case "1":
             match input("Enter species of animal: ").lower().strip():
                 case "dog":
