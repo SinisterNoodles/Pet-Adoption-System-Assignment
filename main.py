@@ -1,6 +1,8 @@
-# Name:
-# Date:
-# Program: Mini Pet Adoption System
+"""
+Name: Chiano Arcari
+Date: May 19, 2026
+Program: Mini Pet Adoption System
+"""
 
 animals = {}
 
